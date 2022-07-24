@@ -5,7 +5,7 @@ import { InputArticle, InputTextarea, InputsTags } from 'components/Input/Input'
 import { Loader, AlertError } from 'components/Alert/Alret';
 import { Submit } from 'components/Buttons/Buttons';
 import { useEffect } from 'react';
-import { requestSlug, requestUpdateSlug } from 'features/article/articleSlice';
+import { requestSlug, requestUpdateSlug, setSlug } from 'features/article/articleSlice';
 
 const CreateArticle = ({ slugTitle }) => {
   const dispatch = useDispatch();
@@ -43,6 +43,7 @@ const CreateArticle = ({ slugTitle }) => {
     data.tagList = data.tagList.filter(Boolean);
     dispatch(requestUpdateSlug({ data, slugTitle }));
     reset();
+    dispatch(setSlug({}));
   };
 
   return (

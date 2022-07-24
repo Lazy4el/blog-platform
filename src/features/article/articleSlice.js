@@ -43,7 +43,7 @@ export const requestSlug = createAsyncThunk('articleSlice/requestSlug', async (s
 // создаем статью
 export const requestCreateSlug = createAsyncThunk('articleSlice/createSlug', async (data, { dispatch }) => {
   return await API.createSlug({ data }).catch((e) => {
-    console.log('articleSlice/requestSlug', e);
+    console.log('articleSlice/createSlug', e);
   });
 });
 
