@@ -1,6 +1,5 @@
 import classes from 'components/Input/Input.module.scss';
 import { Button } from 'antd';
-import { useState } from 'react';
 
 // Почта
 export const InputEmail = ({ register, errors, title, value, valid = true }) => {
