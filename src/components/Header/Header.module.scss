@@ -1,0 +1,24 @@
+.Header {
+  background: #ffffff;
+  padding: 16px 23px;
+  display: flex;
+  justify-content: center;
+
+  &__logo {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: rgba(0, 0, 0, 0.85);
+    justify-self: start;
+  }
+
+  &__container {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 11fr 2fr;
+  }
+}

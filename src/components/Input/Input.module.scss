@@ -1,0 +1,82 @@
+.Input {
+  &__title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #262626;
+    margin: 0;
+  }
+  &__label {
+    display: flex;
+    flex-direction: column;
+  }
+  &__input {
+    width: 100%;
+    padding: 8px 12px;
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+  }
+  &__textarea {
+    resize: none;
+    height: auto;
+    overflow: hidden;
+  }
+  &__error {
+    outline: 1px solid #f5222d;
+    border-radius: 4px;
+  }
+
+  &__error_text {
+    margin: 0;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #f5222d;
+  }
+
+  &__agreement {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  &__text {
+    margin: 0;
+  }
+
+  &__checkbox {
+    margin-top: 3px;
+    width: 16px;
+    height: 16px;
+  }
+  &__tag {
+    max-width: 300px;
+  }
+  &__tagWrap {
+    display: flex;
+    column-gap: 17px;
+    align-items: center;
+  }
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+
+    row-gap: 21px;
+
+    & label {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+
+  &__addTag {
+    max-width: 140px;
+  }
+}

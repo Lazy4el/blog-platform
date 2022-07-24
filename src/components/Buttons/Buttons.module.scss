@@ -1,0 +1,55 @@
+.LogOut {
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  padding: auto 17px;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.CreateArticle {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #52c41a;
+  border-radius: 5px;
+  border: 1px solid #52c41a;
+}
+
+.SignUp {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: #52c41a;
+  border: 1px solid #52c41a;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.SignIn {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.85);
+  border: none;
+}
+
+.Buttons {
+  &__submit {
+    max-width: 320px;
+  }
+}

@@ -1,0 +1,36 @@
+.UserInfo {
+  max-width: 250px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto auto;
+  column-gap: 13px;
+  row-gap: 30px;
+  justify-content: end;
+  &__description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  & p {
+    margin: auto 0;
+  }
+
+  &__name {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: rgba(0, 0, 0, 0.85);
+  }
+
+  &__date {
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+}
