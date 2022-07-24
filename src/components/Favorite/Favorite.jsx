@@ -3,6 +3,7 @@ import { Button } from 'antd';
 import { checkUser } from 'helpers/helpers';
 import { favoriteSlug } from 'features/article/articleSlice';
 import { useDispatch } from 'react-redux';
+import classes from 'components/Favorite/Favorite.module.scss';
 
 const Favorite = ({ slug, favorited, favoritesCount }) => {
   const dispatch = useDispatch();
@@ -11,9 +12,9 @@ const Favorite = ({ slug, favorited, favoritesCount }) => {
     dispatch(favoriteSlug({ slug, favorited }));
   };
   return (
-    <div>
+    <div className={classes.Farvorite}>
       <Button type="text" disabled={!user} onClick={hundelFavorite}>
-        {favorited ? <HeartFilled /> : <HeartOutlined />} {favoritesCount}
+        {favorited ? <HeartFilled style={{ color: '#FF0707' }} /> : <HeartOutlined />} {favoritesCount}
       </Button>
     </div>
   );

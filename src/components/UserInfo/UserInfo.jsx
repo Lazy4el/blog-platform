@@ -13,10 +13,10 @@ const UserInfo = ({ username, logoUrl, date, change }) => {
       <Avatar size={46} className={classes.UserInfo__avatar} src={logoUrl}></Avatar>
 
       {change && (
-        <>
+        <div className={classes.UserInfo__buttons}>
           <DeleteSlug />
           <EditeSlug slug={change} />
-        </>
+        </div>
       )}
     </div>
   );

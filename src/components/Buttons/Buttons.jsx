@@ -2,7 +2,7 @@ import { Button, Popconfirm } from 'antd';
 import Cookie from 'js-cookie';
 import { useDispatch, useSelector } from 'react-redux';
 import classes from 'components/Buttons/Buttons.module.scss';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { logOut } from 'features/user/userSlice';
 import { useLocation } from 'react-router-dom';
 import { requestDeleteSlug } from 'features/article/articleSlice';
@@ -70,13 +70,12 @@ export const DeleteSlug = () => {
   let location = useLocation();
   const dispatch = useDispatch();
 
-  const confirm = () => {
+  const confirm = (e) => {
     dispatch(requestDeleteSlug(location.pathname));
-    <Redirect to={'/'} />;
   };
   const text = 'Are you sure to delete this task?';
   return (
-    <Popconfirm placement="left" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
+    <Popconfirm placement="left" title={text} onConfirm={confirm} okText={<Link to={'/'}>Yes</Link>} cancelText="No">
       <Button className={classes.DeleteSlug}>Delete</Button>
     </Popconfirm>
   );
@@ -85,7 +84,7 @@ export const DeleteSlug = () => {
 export const EditeSlug = ({ slug }) => {
   return (
     <Link to={`/articles/${slug}/edit`}>
-      <Button className={classes.DeleteSlug}>Edit</Button>
+      <Button className={classes.EditeSlug}>Edit</Button>
     </Link>
   );
 };

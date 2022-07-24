@@ -1,6 +1,7 @@
 import { Pagination } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLimitArticles } from 'features/article/articleSlice';
+import 'components/PaginationBlog/Pagination.scss';
 
 const PaginationBlog = () => {
   const { limit, articlesCount, articlesPage } = useSelector((state) => state.article);

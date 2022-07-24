@@ -1,5 +1,6 @@
 import classes from 'components/Input/Input.module.scss';
 import { Button } from 'antd';
+import { useState } from 'react';
 
 // Почта
 export const InputEmail = ({ register, errors, title, value, valid = true }) => {
@@ -157,7 +158,7 @@ export const InputUrl = ({ register, errors, title }) => {
   );
 };
 
-export const InputArticle = ({ register, errors, title, registerName, value }) => {
+export const InputArticle = ({ register, errors, title, registerName, valueDef }) => {
   return (
     <label>
       <p className={classes.Input__title}>{title ? title : 'Title'}</p>
@@ -167,8 +168,8 @@ export const InputArticle = ({ register, errors, title, registerName, value }) =
         })}
         type="text"
         placeholder="Title"
-        defaultValue={!!value ? value : null}
-        className={`${classes.Input__input} ${errors?.image && classes.Input__error}`}
+        defaultValue={valueDef ? valueDef : null}
+        className={`${classes.Input__input} ${errors?.[registerName] && classes.Input__error}`}
       />
       <p className={classes.Input__error_text}> {errors[registerName] && errors[registerName]?.message}</p>
     </label>
@@ -176,14 +177,15 @@ export const InputArticle = ({ register, errors, title, registerName, value }) =
 };
 
 // Поле для больших текстов
-export const InputTextarea = ({ title, errors, registerName, register, value }) => {
+export const InputTextarea = ({ title, errors, registerName, register, valueDef }) => {
   return (
     <label className={`${classes.Input__label}`}>
       <p className={classes.Input__title}>{title ? title : 'Text'}</p>
       <textarea
-        className={`${classes.Input__input} ${classes.Input__textarea}`}
-        rows={4}
-        defaultValue={!!value ? value : null}
+        className={`${classes.Input__input} ${classes.Input__textarea} ${
+          errors?.[registerName] && classes.Input__error
+        }`}
+        defaultValue={!!valueDef ? valueDef : null}
         placeholder={'Text'}
         {...register(registerName, {
           required: 'Поле должно быть заполнено',
@@ -213,6 +215,7 @@ export const InputsTags = ({ fields, register, remove, append }) => {
             </label>
             <Button
               danger
+              className={classes.Input__deleteTag}
               onClick={() => {
                 remove(index);
               }}

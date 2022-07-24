@@ -41,7 +41,6 @@ const CreateArticle = ({ slugTitle }) => {
       return tag.value.trim();
     });
     data.tagList = data.tagList.filter(Boolean);
-    console.log(data);
     dispatch(requestUpdateSlug({ data, slugTitle }));
     reset();
   };
@@ -49,20 +48,22 @@ const CreateArticle = ({ slugTitle }) => {
   return (
     <div className={classes.CreateArticle}>
       <div className={classes.CreateArticle__title}>Edite article</div>
-      <form className={classes.CreateArticle__form} onSubmit={handleSubmit(onSubmit)}>
-        <InputArticle registerName={'title'} register={register} errors={errors} value={title}></InputArticle>
-        <InputArticle
-          registerName={'description'}
-          register={register}
-          title={'Short Description'}
-          errors={errors}
-          value={description}
-        ></InputArticle>
-        <InputTextarea register={register} errors={errors} registerName={'body'} value={body}></InputTextarea>
-        <InputsTags register={register} remove={remove} append={append} fields={fields}></InputsTags>
+      {!loading && title ? (
+        <form className={classes.CreateArticle__form} onSubmit={handleSubmit(onSubmit)}>
+          <InputArticle registerName={'title'} register={register} errors={errors} valueDef={title}></InputArticle>
+          <InputArticle
+            registerName={'description'}
+            register={register}
+            title={'Short Description'}
+            errors={errors}
+            valueDef={description}
+          ></InputArticle>
+          <InputTextarea register={register} errors={errors} registerName={'body'} valueDef={body}></InputTextarea>
+          <InputsTags register={register} remove={remove} append={append} fields={fields}></InputsTags>
 
-        <Submit type={'primary'} text={'Send'}></Submit>
-      </form>
+          <Submit type={'primary'} text={'Send'}></Submit>
+        </form>
+      ) : null}
       <Loader loading={loading}></Loader>
       <AlertError error={error}></AlertError>
     </div>

@@ -41,9 +41,15 @@ const Main = () => {
             return !username ? <Redirect to="/" /> : <EditeArticle slugTitle={match.params.slug}></EditeArticle>;
           }}
         ></Route>
+        <Route exact path="/articles">
+          <Articles></Articles>
+        </Route>
         <Route exact path="/">
           <Articles></Articles>
         </Route>
+        <Redirect to="/">
+          <Articles></Articles>
+        </Redirect>
       </Switch>
     </main>
   );

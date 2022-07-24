@@ -16,7 +16,6 @@ const initialState = {
 export const getLimitArticles = createAsyncThunk(
   'articleSlice/getLimitArticles',
   async ({ authorizationCheck, limit, offset, page }, { dispatch }) => {
-    console.log(authorizationCheck, limit, offset, page);
     return await API.getArticles(authorizationCheck, limit, offset)
       .then((response) => {
         dispatch(setArticles(response.articles));
@@ -118,6 +117,16 @@ export const articleSlice = createSlice({
       state.loading = false;
     },
     [getLimitArticles.pending]: (state) => {
+      state.loading = true;
+    },
+
+    [requestSlug.fulfilled]: (state) => {
+      state.loading = false;
+    },
+    [requestSlug.rejected]: (state) => {
+      state.loading = false;
+    },
+    [requestSlug.pending]: (state) => {
       state.loading = true;
     },
   },

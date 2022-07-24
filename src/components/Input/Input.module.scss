@@ -23,8 +23,10 @@
   }
   &__textarea {
     resize: none;
-    height: auto;
-    overflow: hidden;
+    height: 168px;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
   }
   &__error {
     outline: 1px solid #f5222d;
@@ -77,6 +79,11 @@
   }
 
   &__addTag {
+    border-radius: 5px;
+    max-width: 140px;
+  }
+  &__deleteTag {
+    border-radius: 5px;
     max-width: 140px;
   }
 }
