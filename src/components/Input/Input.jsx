@@ -204,7 +204,7 @@ export const InputsTags = ({ fields, register, remove, append }) => {
           <div key={id} className={classes.Input__tagWrap}>
             <label>
               <input
-                {...register(`tags.${index}.value`)}
+                {...register(`tagList.${index}.value`)}
                 type="text"
                 defaultValue={value}
                 placeholder="Title"
@@ -226,7 +226,7 @@ export const InputsTags = ({ fields, register, remove, append }) => {
                 ghost
                 className={classes.Input__addTag}
                 onClick={() => {
-                  append({ tags: 'tags', value: '' });
+                  append({ tagList: 'tags', value: '' });
                 }}
               >
                 Add tag
@@ -240,7 +240,7 @@ export const InputsTags = ({ fields, register, remove, append }) => {
           ghost
           className={classes.Input__addTag}
           onClick={() => {
-            append({ tags: 'tags', value: '' });
+            append({ tagList: 'tags', value: '' });
           }}
         >
           Add tag

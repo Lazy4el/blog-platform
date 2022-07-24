@@ -6,6 +6,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Articles from 'components/Articles/Articles';
 import CreateArticle from 'components/CreateArticle/CreateArticle';
+import EditeArticle from 'components/EditeArticle/EditeArticle';
 import Slug from 'components/Slug/Slug';
 
 const Main = () => {
@@ -37,7 +38,7 @@ const Main = () => {
           exact
           path="/articles/:slug/edit"
           render={({ match }) => {
-            return !username ? <Redirect to="/" /> : <CreateArticle slugTitle={match.params.slug}></CreateArticle>;
+            return !username ? <Redirect to="/" /> : <EditeArticle slugTitle={match.params.slug}></EditeArticle>;
           }}
         ></Route>
         <Route exact path="/">

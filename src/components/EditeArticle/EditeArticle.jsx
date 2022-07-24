@@ -5,11 +5,12 @@ import { InputArticle, InputTextarea, InputsTags } from 'components/Input/Input'
 import { Loader, AlertError } from 'components/Alert/Alret';
 import { Submit } from 'components/Buttons/Buttons';
 import { useEffect } from 'react';
-import { requestCreateSlug } from 'features/article/articleSlice';
+import { requestSlug, requestUpdateSlug } from 'features/article/articleSlice';
 
-const CreateArticle = () => {
+const CreateArticle = ({ slugTitle }) => {
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.article);
+  const { loading, error, slug } = useSelector((state) => state.article);
+  const { title, body, description, tagList } = slug;
 
   const {
     register,
@@ -18,7 +19,6 @@ const CreateArticle = () => {
     reset,
     control,
   } = useForm({ mode: 'onBlur' });
-
   const { fields, append, remove } = useFieldArray({
     control,
     name: 'tagList',
@@ -26,30 +26,39 @@ const CreateArticle = () => {
   });
 
   useEffect(() => {
-    append({ tagList: 'tags', value: '' });
-  }, [append, dispatch]);
+    dispatch(requestSlug(slugTitle));
+    if (!!tagList) {
+      append(
+        tagList.filter(Boolean).map((element) => {
+          return { name: 'tagList', value: element };
+        })
+      );
+    }
+  }, [append, dispatch, slugTitle, title]);
 
   const onSubmit = (data) => {
     data.tagList = data.tagList?.map((tag) => {
       return tag.value.trim();
     });
     data.tagList = data.tagList.filter(Boolean);
-    dispatch(requestCreateSlug(data));
+    console.log(data);
+    dispatch(requestUpdateSlug({ data, slugTitle }));
     reset();
   };
 
   return (
     <div className={classes.CreateArticle}>
-      <div className={classes.CreateArticle__title}>Create new article</div>
+      <div className={classes.CreateArticle__title}>Edite article</div>
       <form className={classes.CreateArticle__form} onSubmit={handleSubmit(onSubmit)}>
-        <InputArticle registerName={'title'} register={register} errors={errors}></InputArticle>
+        <InputArticle registerName={'title'} register={register} errors={errors} value={title}></InputArticle>
         <InputArticle
           registerName={'description'}
           register={register}
           title={'Short Description'}
           errors={errors}
+          value={description}
         ></InputArticle>
-        <InputTextarea register={register} errors={errors} registerName={'body'}></InputTextarea>
+        <InputTextarea register={register} errors={errors} registerName={'body'} value={body}></InputTextarea>
         <InputsTags register={register} remove={remove} append={append} fields={fields}></InputsTags>
 
         <Submit type={'primary'} text={'Send'}></Submit>

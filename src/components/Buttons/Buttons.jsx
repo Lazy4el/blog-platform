@@ -1,9 +1,11 @@
-import { Button } from 'antd';
+import { Button, Popconfirm } from 'antd';
 import Cookie from 'js-cookie';
 import { useDispatch, useSelector } from 'react-redux';
 import classes from 'components/Buttons/Buttons.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { logOut } from 'features/user/userSlice';
+import { useLocation } from 'react-router-dom';
+import { requestDeleteSlug } from 'features/article/articleSlice';
 
 export const LogOut = () => {
   const { userProfile } = useSelector((state) => state.user);
@@ -65,7 +67,19 @@ export const Submit = ({ type, text }) => {
 };
 
 export const DeleteSlug = () => {
-  return <Button className={classes.DeleteSlug}>Delete</Button>;
+  let location = useLocation();
+  const dispatch = useDispatch();
+
+  const confirm = () => {
+    dispatch(requestDeleteSlug(location.pathname));
+    <Redirect to={'/'} />;
+  };
+  const text = 'Are you sure to delete this task?';
+  return (
+    <Popconfirm placement="left" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
+      <Button className={classes.DeleteSlug}>Delete</Button>
+    </Popconfirm>
+  );
 };
 
 export const EditeSlug = ({ slug }) => {

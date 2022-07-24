@@ -1,6 +1,7 @@
 import UserInfo from 'components/UserInfo/UserInfo';
 import { Link } from 'react-router-dom';
 import TagList from 'components/TagList/TagList';
+import Favorite from 'components/Favorite/Farvorite';
 import classes from 'components/Articles/Article.module.scss';
 
 const Article = ({ article, full, change }) => {
@@ -14,8 +15,7 @@ const Article = ({ article, full, change }) => {
               {title}
             </h3>
           </Link>
-          {favorited}
-          {favoritesCount}
+          <Favorite slug={slug} favorited={favorited} favoritesCount={favoritesCount}></Favorite>
         </div>
         <TagList tags={tagList}></TagList>
         <div className={classes.PostItem__text}>{description}</div>
